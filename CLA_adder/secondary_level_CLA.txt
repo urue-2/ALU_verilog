@@ -1,0 +1,38 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2021/11/15 18:34:54
+// Design Name: 
+// Module Name: secondary_level_CLA
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module secondary_level_CLA(in1,in2,c0,out,c);
+
+    input [15:0]in1,in2;
+    input c0;
+    output [15:0]out;
+    output c;
+    wire c4,c8,c12;
+    
+    CLA_adder u1(in1[3:0],in2[3:0],c0,out[3:0],c4);
+    CLA_adder u2(in1[7:4],in2[7:4],c4,out[7:4],c8);
+    CLA_adder u3(in1[11:8],in2[11:8],c8,out[11:8],c12);
+    CLA_adder u4(in1[15:12],in2[15:12],c12,out[15:12],c);
+    
+
+    
+endmodule
